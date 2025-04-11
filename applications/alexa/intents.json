@@ -1,0 +1,134 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "aiスキル",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "GetApiDataIntent",
+          "slots": [
+            {
+              "name": "query",
+              "type": "AMAZON.SearchQuery"
+            }
+          ],
+          "samples": [
+            "{query} を調べて",
+            "{query} を教えて",
+            "{query} について調べて",
+            "これについて教えて {query}",
+            "教えて {query}",
+            "質問があります {query}",
+            "知りたいです {query}",
+            "調べて {query}",
+            "検索して {query}",
+            "{query} について知りたい",
+            "{query} について教えて",
+            "{query} を調べて",
+            "{query} は何",
+            "{query} って何",
+            "{query} を検索"
+          ]
+        },
+        {
+          "name": "TranslationIntent",
+          "slots": [
+            {
+              "name": "query",
+              "type": "AMAZON.SearchQuery"
+            }
+          ],
+          "samples": [
+            "翻訳して {query}",
+            "翻訳 {query}",
+            "訳して {query}",
+            "通訳して {query}",
+            "英訳して {query}",
+            "和訳して {query}",
+            "{query} を翻訳して",
+            "{query} を翻訳",
+            "{query} の翻訳",
+            "この文章を翻訳 {query}"
+          ]
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.FallbackIntent",
+          "samples": []
+        }
+      ],
+      "types": []
+    },
+    "dialog": {
+      "intents": [
+        {
+          "name": "GetApiDataIntent",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "query",
+              "type": "AMAZON.SearchQuery",
+              "confirmationRequired": false,
+              "elicitationRequired": true,
+              "prompts": {
+                "elicitation": "Elicit.Slot.GetApiDataIntent.query"
+              }
+            }
+          ]
+        },
+        {
+          "name": "TranslationIntent",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "query",
+              "type": "AMAZON.SearchQuery",
+              "confirmationRequired": false,
+              "elicitationRequired": true,
+              "prompts": {
+                "elicitation": "Elicit.Slot.TranslationIntent.query"
+              }
+            }
+          ]
+        }
+      ],
+      "delegationStrategy": "ALWAYS"
+    },
+    "prompts": [
+      {
+        "id": "Elicit.Slot.GetApiDataIntent.query",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "何について知りたいですか？"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.TranslationIntent.query",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "翻訳したい文章を教えてください"
+          }
+        ]
+      }
+    ]
+  }
+}
