@@ -1,0 +1,19 @@
+{
+  "name": "alexa-bedrock-responder",
+  "packageManager": "yarn@4.5.1",
+  "private": true,
+  "dependencies": {
+    "@aws-sdk/client-bedrock-runtime": "^3.785.0",
+    "@types/aws-lambda": "^8.10.148",
+    "@types/node": "^22.14.0",
+    "aws-sdk-client-mock": "^4.1.0",
+    "esbuild": "^0.25.2",
+    "typescript": "^5.7.3"
+  },
+  "scripts": {
+    "build": "tsc --noEmit && rm -rf ./dist && node build.js"
+  },
+  "devDependencies": {
+    "prettier": "^3.0.0"
+  }
+}
